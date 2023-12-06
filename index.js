@@ -29,6 +29,9 @@ async function connectToWhatsApp() {
             console.log("opened connection");
         }
     });
+    sock.ev.on("messages.upsert", (messages) => {
+        console.log("received messages", messages);
+    },);
     sock.ev.on ('creds.update', saveCreds)
 }
 connectToWhatsApp();
